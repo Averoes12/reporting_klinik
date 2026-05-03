@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080">
+  <defs>
+    <style>
+      .bg { fill: #f7fafc; }
+      .title { font: 700 34px Arial, sans-serif; fill: #102a43; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #52616b; }
+      .entity { fill: #ffffff; stroke: #243b53; stroke-width: 2; rx: 10; }
+      .entity-title { fill: #243b53; }
+      .entity-name { font: 700 18px Arial, sans-serif; fill: #ffffff; letter-spacing: 0; }
+      .field { font: 15px Arial, sans-serif; fill: #243b53; }
+      .pk { font: 700 15px Arial, sans-serif; fill: #0b7285; }
+      .fk { font: 700 15px Arial, sans-serif; fill: #9c4221; }
+      .line { stroke: #486581; stroke-width: 2.4; fill: none; }
+      .rel { font: 700 15px Arial, sans-serif; fill: #102a43; }
+      .rel-note { font: 13px Arial, sans-serif; fill: #627d98; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#486581"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1080"/>
+  <text class="title" x="60" y="58">ERD Aplikasi Reporting Klinik</text>
+  <text class="subtitle" x="60" y="88">Relasi utama untuk laporan kunjungan, laporan obat, jadwal dokter, dan data master.</text>
+
+  <!-- PASIEN -->
+  <g id="pasien">
+    <rect class="entity" x="60" y="135" width="280" height="250"/>
+    <rect class="entity-title" x="60" y="135" width="280" height="42" rx="10"/>
+    <text class="entity-name" x="80" y="162">PASIEN</text>
+    <text class="pk" x="80" y="205">PK id_pasien</text>
+    <text class="field" x="80" y="231">no_rm</text>
+    <text class="field" x="80" y="257">nik</text>
+    <text class="field" x="80" y="283">nama_pasien</text>
+    <text class="field" x="80" y="309">jenis_kelamin</text>
+    <text class="field" x="80" y="335">tanggal_lahir</text>
+    <text class="field" x="80" y="361">alamat, no_hp, alergi</text>
+  </g>
+
+  <!-- POLI -->
+  <g id="poli">
+    <rect class="entity" x="625" y="135" width="250" height="140"/>
+    <rect class="entity-title" x="625" y="135" width="250" height="42" rx="10"/>
+    <text class="entity-name" x="645" y="162">POLI</text>
+    <text class="pk" x="645" y="205">PK id_poli</text>
+    <text class="field" x="645" y="231">nama_poli</text>
+  </g>
+
+  <!-- DOKTER -->
+  <g id="dokter">
+    <rect class="entity" x="1260" y="135" width="280" height="225"/>
+    <rect class="entity-title" x="1260" y="135" width="280" height="42" rx="10"/>
+    <text class="entity-name" x="1280" y="162">DOKTER</text>
+    <text class="pk" x="1280" y="205">PK id_dokter</text>
+    <text class="field" x="1280" y="231">kode_dokter</text>
+    <text class="field" x="1280" y="257">nama_dokter</text>
+    <text class="fk" x="1280" y="283">FK id_poli</text>
+    <text class="field" x="1280" y="309">no_hp, alamat</text>
+    <text class="field" x="1280" y="335">status</text>
+  </g>
+
+  <!-- KUNJUNGAN -->
+  <g id="kunjungan">
+    <rect class="entity" x="625" y="425" width="310" height="290"/>
+    <rect class="entity-title" x="625" y="425" width="310" height="42" rx="10"/>
+    <text class="entity-name" x="645" y="452">KUNJUNGAN</text>
+    <text class="pk" x="645" y="495">PK id_kunjungan</text>
+    <text class="field" x="645" y="521">no_kunjungan</text>
+    <text class="fk" x="645" y="547">FK id_pasien</text>
+    <text class="fk" x="645" y="573">FK id_dokter</text>
+    <text class="fk" x="645" y="599">FK id_poli</text>
+    <text class="field" x="645" y="625">tanggal_kunjungan</text>
+    <text class="field" x="645" y="651">keluhan, diagnosa, tindakan</text>
+    <text class="field" x="645" y="677">status</text>
+  </g>
+
+  <!-- JADWAL DOKTER -->
+  <g id="jadwal">
+    <rect class="entity" x="1260" y="430" width="280" height="245"/>
+    <rect class="entity-title" x="1260" y="430" width="280" height="42" rx="10"/>
+    <text class="entity-name" x="1280" y="457">JADWAL_DOKTER</text>
+    <text class="pk" x="1280" y="500">PK id_jadwal</text>
+    <text class="fk" x="1280" y="526">FK id_dokter</text>
+    <text class="fk" x="1280" y="552">FK id_poli</text>
+    <text class="field" x="1280" y="578">hari</text>
+    <text class="field" x="1280" y="604">jam_mulai</text>
+    <text class="field" x="1280" y="630">jam_selesai</text>
+    <text class="field" x="1280" y="656">kuota</text>
+  </g>
+
+  <!-- OBAT -->
+  <g id="obat">
+    <rect class="entity" x="60" y="700" width="310" height="285"/>
+    <rect class="entity-title" x="60" y="700" width="310" height="42" rx="10"/>
+    <text class="entity-name" x="80" y="727">OBAT</text>
+    <text class="pk" x="80" y="770">PK id_obat</text>
+    <text class="field" x="80" y="796">kode_obat / no</text>
+    <text class="field" x="80" y="822">nama_obat / name</text>
+    <text class="field" x="80" y="848">satuan / measure</text>
+    <text class="field" x="80" y="874">harga / price</text>
+    <text class="field" x="80" y="900">stok_awal / first_stock</text>
+    <text class="field" x="80" y="926">stok_masuk / arrived_stock</text>
+    <text class="field" x="80" y="952">stok_retur, stok_akhir</text>
+    <text class="field" x="80" y="978">tanggal_expired / expdt</text>
+  </g>
+
+  <!-- STOK MUTASI -->
+  <g id="mutasi">
+    <rect class="entity" x="60" y="430" width="310" height="225"/>
+    <rect class="entity-title" x="60" y="430" width="310" height="42" rx="10"/>
+    <text class="entity-name" x="80" y="457">STOK_OBAT_MUTASI</text>
+    <text class="pk" x="80" y="500">PK id_mutasi</text>
+    <text class="fk" x="80" y="526">FK id_obat</text>
+    <text class="field" x="80" y="552">tanggal_mutasi</text>
+    <text class="field" x="80" y="578">jenis_mutasi</text>
+    <text class="field" x="80" y="604">jumlah</text>
+    <text class="field" x="80" y="630">keterangan</text>
+  </g>
+
+  <!-- RESEP -->
+  <g id="resep">
+    <rect class="entity" x="625" y="805" width="280" height="165"/>
+    <rect class="entity-title" x="625" y="805" width="280" height="42" rx="10"/>
+    <text class="entity-name" x="645" y="832">RESEP</text>
+    <text class="pk" x="645" y="875">PK id_resep</text>
+    <text class="fk" x="645" y="901">FK id_kunjungan</text>
+    <text class="field" x="645" y="927">tanggal_resep</text>
+    <text class="field" x="645" y="953">catatan</text>
+  </g>
+
+  <!-- RESEP DETAIL -->
+  <g id="resep-detail">
+    <rect class="entity" x="1260" y="775" width="280" height="240"/>
+    <rect class="entity-title" x="1260" y="775" width="280" height="42" rx="10"/>
+    <text class="entity-name" x="1280" y="802">RESEP_DETAIL</text>
+    <text class="pk" x="1280" y="845">PK id_resep_detail</text>
+    <text class="fk" x="1280" y="871">FK id_resep</text>
+    <text class="fk" x="1280" y="897">FK id_obat</text>
+    <text class="field" x="1280" y="923">jumlah</text>
+    <text class="field" x="1280" y="949">aturan_pakai</text>
+    <text class="field" x="1280" y="975">harga_satuan</text>
+    <text class="field" x="1280" y="1001">subtotal</text>
+  </g>
+
+  <!-- Relationships -->
+  <path class="line" d="M340 260 C455 260 500 570 625 570" marker-end="url(#arrow)"/>
+  <text class="rel" x="360" y="250">1</text>
+  <text class="rel" x="602" y="558">N</text>
+  <text class="rel-note" x="420" y="373">pasien melakukan kunjungan</text>
+
+  <path class="line" d="M1260 250 C1110 250 1055 570 935 570" marker-end="url(#arrow)"/>
+  <text class="rel" x="1238" y="243">1</text>
+  <text class="rel" x="948" y="558">N</text>
+  <text class="rel-note" x="1000" y="373">dokter menangani kunjungan</text>
+
+  <path class="line" d="M875 205 C1010 205 1120 245 1260 245" marker-end="url(#arrow)"/>
+  <text class="rel" x="890" y="196">1</text>
+  <text class="rel" x="1238" y="236">N</text>
+  <text class="rel-note" x="1010" y="190">poli memiliki dokter</text>
+
+  <path class="line" d="M1400 360 L1400 430" marker-end="url(#arrow)"/>
+  <text class="rel" x="1412" y="383">1</text>
+  <text class="rel" x="1412" y="421">N</text>
+  <text class="rel-note" x="1418" y="405">jadwal</text>
+
+  <path class="line" d="M875 245 C1030 300 1100 515 1260 545" marker-end="url(#arrow)"/>
+  <text class="rel" x="890" y="257">1</text>
+  <text class="rel" x="1238" y="540">N</text>
+  <text class="rel-note" x="995" y="445">poli membuka jadwal</text>
+
+  <path class="line" d="M780 715 L780 805" marker-end="url(#arrow)"/>
+  <text class="rel" x="795" y="745">1</text>
+  <text class="rel" x="795" y="798">N</text>
+  <text class="rel-note" x="810" y="768">kunjungan menghasilkan resep</text>
+
+  <path class="line" d="M905 887 C1030 887 1135 895 1260 895" marker-end="url(#arrow)"/>
+  <text class="rel" x="920" y="878">1</text>
+  <text class="rel" x="1238" y="886">N</text>
+  <text class="rel-note" x="1015" y="875">resep berisi detail obat</text>
+
+  <path class="line" d="M370 842 L535 842 L535 1040 L1185 1040 L1185 897 L1260 897" marker-end="url(#arrow)"/>
+  <text class="rel" x="385" y="831">1</text>
+  <text class="rel" x="1238" y="914">N</text>
+  <text class="rel-note" x="590" y="1020">obat digunakan pada resep detail</text>
+
+  <path class="line" d="M215 700 L215 655" marker-end="url(#arrow)"/>
+  <text class="rel" x="230" y="690">1</text>
+  <text class="rel" x="230" y="668">N</text>
+  <text class="rel-note" x="240" y="684">riwayat stok</text>
+</svg>

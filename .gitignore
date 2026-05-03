@@ -1,0 +1,28 @@
+# Java / NetBeans build output
+build/
+dist/
+nbbuild/
+nbdist/
+*.class
+
+# NetBeans private user settings
+nbproject/private/
+
+# Logs and runtime dumps
+*.log
+hs_err_pid*
+replay_pid*
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# IDE / editor metadata
+.idea/
+*.iml
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
