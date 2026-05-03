@@ -36,12 +36,11 @@ public class FormPasien extends javax.swing.JFrame {
     }
 
     private void focusForm() {
-        txtNoRm.requestFocus();
+        txtNik.requestFocus();
     }
 
     private void clear() {
         generateIdPasien();
-        txtNoRm.setText("");
         txtNik.setText("");
         txtNamaPasien.setText("");
         txtTanggalLahir.setText("");
@@ -119,7 +118,6 @@ public class FormPasien extends javax.swing.JFrame {
 
     private boolean isInputValid() {
         if (txtIdPasien.getText().trim().isEmpty()
-                || txtNoRm.getText().trim().isEmpty()
                 || txtNik.getText().trim().isEmpty()
                 || txtNamaPasien.getText().trim().isEmpty()
                 || selectedGender().isEmpty()
@@ -163,7 +161,7 @@ public class FormPasien extends javax.swing.JFrame {
     }
 
     private void dataTable() {
-        Object[] columns = {"ID Pasien", "No. RM", "NIK", "Nama Pasien", "Jenis Kelamin", "Tanggal Lahir", "No. HP", "Alamat", "Alergi"};
+        Object[] columns = {"ID Pasien", "NIK", "Nama Pasien", "Jenis Kelamin", "Tanggal Lahir", "No. HP", "Alamat", "Alergi"};
         tableModel = new DefaultTableModel(null, columns) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -177,9 +175,9 @@ public class FormPasien extends javax.swing.JFrame {
         }
 
         String cari = txtCari.getText().trim();
-        String sql = "SELECT id_pasien, no_rm, nik, nama_pasien, jenis_kelamin, tanggal_lahir, alamat, no_hp, alergi "
+        String sql = "SELECT id_pasien, nik, nama_pasien, jenis_kelamin, tanggal_lahir, alamat, no_hp, alergi "
                 + "FROM pasien "
-                + "WHERE no_rm LIKE ? OR nik LIKE ? OR nama_pasien LIKE ? "
+                + "WHERE id_pasien LIKE ? OR nik LIKE ? OR nama_pasien LIKE ? "
                 + "ORDER BY CASE "
                 + "WHEN id_pasien REGEXP '^" + ID_PASIEN_PREFIX + "[0-9]+$' THEN CAST(SUBSTRING(id_pasien, 4) AS UNSIGNED) "
                 + "WHEN id_pasien REGEXP '^[0-9]+$' THEN CAST(id_pasien AS UNSIGNED) "
@@ -196,7 +194,6 @@ public class FormPasien extends javax.swing.JFrame {
                     Date tglLahir = hasil.getDate("tanggal_lahir");
                     tableModel.addRow(new Object[]{
                         valueOrEmpty(hasil.getString("id_pasien")),
-                        valueOrEmpty(hasil.getString("no_rm")),
                         valueOrEmpty(hasil.getString("nik")),
                         valueOrEmpty(hasil.getString("nama_pasien")),
                         displayGender(hasil.getString("jenis_kelamin")),
@@ -216,7 +213,7 @@ public class FormPasien extends javax.swing.JFrame {
     }
 
     private void setTableColumnWidth() {
-        int[] widths = {85, 90, 120, 150, 110, 100, 100, 220, 140};
+        int[] widths = {85, 130, 170, 110, 100, 100, 220, 140};
         for (int i = 0; i < widths.length && i < tblPasien.getColumnModel().getColumnCount(); i++) {
             tblPasien.getColumnModel().getColumn(i).setPreferredWidth(widths[i]);
         }
@@ -248,7 +245,6 @@ public class FormPasien extends javax.swing.JFrame {
         gender = new javax.swing.ButtonGroup();
         lblTitle = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
-        lblNoRm = new javax.swing.JLabel();
         lblNik = new javax.swing.JLabel();
         lblNama = new javax.swing.JLabel();
         lblJenis = new javax.swing.JLabel();
@@ -257,7 +253,6 @@ public class FormPasien extends javax.swing.JFrame {
         lblAlamat = new javax.swing.JLabel();
         lblAlergi = new javax.swing.JLabel();
         txtIdPasien = new javax.swing.JTextField();
-        txtNoRm = new javax.swing.JTextField();
         txtNik = new javax.swing.JTextField();
         txtNamaPasien = new javax.swing.JTextField();
         rbL = new javax.swing.JRadioButton();
@@ -287,8 +282,6 @@ public class FormPasien extends javax.swing.JFrame {
         lblTitle.setText("Data Pasien");
 
         lblId.setText("ID Pasien");
-
-        lblNoRm.setText("No. RM");
 
         lblNik.setText("NIK");
 
@@ -396,7 +389,7 @@ public class FormPasien extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Pasien", "No. RM", "NIK", "Nama Pasien", "Jenis Kelamin", "Tanggal Lahir", "No. HP", "Alamat", "Alergi"
+                "ID Pasien", "NIK", "Nama Pasien", "Jenis Kelamin", "Tanggal Lahir", "No. HP", "Alamat", "Alergi"
             }
         ));
         tblPasien.setRowHeight(24);
@@ -445,7 +438,6 @@ public class FormPasien extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblId)
-                            .addComponent(lblNoRm)
                             .addComponent(lblNik)
                             .addComponent(lblNama)
                             .addComponent(lblJenis)
@@ -456,7 +448,6 @@ public class FormPasien extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtIdPasien)
-                            .addComponent(txtNoRm)
                             .addComponent(txtNik)
                             .addComponent(txtNamaPasien)
                             .addGroup(layout.createSequentialGroup()
@@ -489,10 +480,6 @@ public class FormPasien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
                     .addComponent(txtIdPasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNoRm)
-                    .addComponent(txtNoRm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNik)
@@ -552,19 +539,18 @@ public class FormPasien extends javax.swing.JFrame {
             return;
         }
 
-        String sql = "INSERT INTO pasien (id_pasien, no_rm, nik, nama_pasien, jenis_kelamin, tanggal_lahir, alamat, no_hp, alergi) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pasien (id_pasien, nik, nama_pasien, jenis_kelamin, tanggal_lahir, alamat, no_hp, alergi) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stat = conn.prepareStatement(sql)) {
             stat.setString(1, txtIdPasien.getText().trim());
-            stat.setString(2, txtNoRm.getText().trim());
-            stat.setString(3, txtNik.getText().trim());
-            stat.setString(4, txtNamaPasien.getText().trim());
-            stat.setString(5, selectedGender());
-            stat.setDate(6, tanggalLahir);
-            stat.setString(7, txtAlamat.getText().trim());
-            stat.setString(8, txtNoHp.getText().trim());
-            stat.setString(9, txtAlergi.getText().trim());
+            stat.setString(2, txtNik.getText().trim());
+            stat.setString(3, txtNamaPasien.getText().trim());
+            stat.setString(4, selectedGender());
+            stat.setDate(5, tanggalLahir);
+            stat.setString(6, txtAlamat.getText().trim());
+            stat.setString(7, txtNoHp.getText().trim());
+            stat.setString(8, txtAlergi.getText().trim());
             stat.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "Data pasien berhasil disimpan.");
@@ -591,19 +577,18 @@ public class FormPasien extends javax.swing.JFrame {
             return;
         }
 
-        String sql = "UPDATE pasien SET no_rm = ?, nik = ?, nama_pasien = ?, jenis_kelamin = ?, tanggal_lahir = ?, alamat = ?, no_hp = ?, alergi = ? "
+        String sql = "UPDATE pasien SET nik = ?, nama_pasien = ?, jenis_kelamin = ?, tanggal_lahir = ?, alamat = ?, no_hp = ?, alergi = ? "
                 + "WHERE id_pasien = ?";
 
         try (PreparedStatement stat = conn.prepareStatement(sql)) {
-            stat.setString(1, txtNoRm.getText().trim());
-            stat.setString(2, txtNik.getText().trim());
-            stat.setString(3, txtNamaPasien.getText().trim());
-            stat.setString(4, selectedGender());
-            stat.setDate(5, tanggalLahir);
-            stat.setString(6, txtAlamat.getText().trim());
-            stat.setString(7, txtNoHp.getText().trim());
-            stat.setString(8, txtAlergi.getText().trim());
-            stat.setString(9, txtIdPasien.getText().trim());
+            stat.setString(1, txtNik.getText().trim());
+            stat.setString(2, txtNamaPasien.getText().trim());
+            stat.setString(3, selectedGender());
+            stat.setDate(4, tanggalLahir);
+            stat.setString(5, txtAlamat.getText().trim());
+            stat.setString(6, txtNoHp.getText().trim());
+            stat.setString(7, txtAlergi.getText().trim());
+            stat.setString(8, txtIdPasien.getText().trim());
             stat.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "Data pasien berhasil diubah.");
@@ -673,14 +658,13 @@ public class FormPasien extends javax.swing.JFrame {
 
         int modelRow = tblPasien.convertRowIndexToModel(row);
         txtIdPasien.setText(tableModel.getValueAt(modelRow, 0).toString());
-        txtNoRm.setText(tableModel.getValueAt(modelRow, 1).toString());
-        txtNik.setText(tableModel.getValueAt(modelRow, 2).toString());
-        txtNamaPasien.setText(tableModel.getValueAt(modelRow, 3).toString());
-        setSelectedGender(tableModel.getValueAt(modelRow, 4).toString());
-        txtTanggalLahir.setText(tableModel.getValueAt(modelRow, 5).toString());
-        txtNoHp.setText(tableModel.getValueAt(modelRow, 6).toString());
-        txtAlamat.setText(tableModel.getValueAt(modelRow, 7).toString());
-        txtAlergi.setText(tableModel.getValueAt(modelRow, 8).toString());
+        txtNik.setText(tableModel.getValueAt(modelRow, 1).toString());
+        txtNamaPasien.setText(tableModel.getValueAt(modelRow, 2).toString());
+        setSelectedGender(tableModel.getValueAt(modelRow, 3).toString());
+        txtTanggalLahir.setText(tableModel.getValueAt(modelRow, 4).toString());
+        txtNoHp.setText(tableModel.getValueAt(modelRow, 5).toString());
+        txtAlamat.setText(tableModel.getValueAt(modelRow, 6).toString());
+        txtAlergi.setText(tableModel.getValueAt(modelRow, 7).toString());
         btnSimpan.setEnabled(false);
     }//GEN-LAST:event_tblPasienMouseClicked
 
@@ -729,7 +713,6 @@ public class FormPasien extends javax.swing.JFrame {
     private javax.swing.JLabel lblNama;
     private javax.swing.JLabel lblNik;
     private javax.swing.JLabel lblNoHp;
-    private javax.swing.JLabel lblNoRm;
     private javax.swing.JLabel lblTanggalLahir;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel panelData;
@@ -743,7 +726,6 @@ public class FormPasien extends javax.swing.JFrame {
     private javax.swing.JTextField txtNamaPasien;
     private javax.swing.JTextField txtNik;
     private javax.swing.JTextField txtNoHp;
-    private javax.swing.JTextField txtNoRm;
     private javax.swing.JTextField txtTanggalLahir;
     // End of variables declaration//GEN-END:variables
 }

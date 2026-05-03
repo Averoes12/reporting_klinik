@@ -31,7 +31,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblId" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblKode" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblNama" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblSatuan" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblHarga" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -44,7 +43,6 @@
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtIdObat" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtKodeObat" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtNamaObat" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtSatuan" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtHarga" alignment="0" max="32767" attributes="0"/>
@@ -79,8 +77,6 @@
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0"><Component id="lblId" alignment="3" min="-2" max="-2" attributes="0"/><Component id="txtIdObat" alignment="3" min="-2" max="-2" attributes="0"/></Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0"><Component id="lblKode" alignment="3" min="-2" max="-2" attributes="0"/><Component id="txtKodeObat" alignment="3" min="-2" max="-2" attributes="0"/></Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0"><Component id="lblNama" alignment="3" min="-2" max="-2" attributes="0"/><Component id="txtNamaObat" alignment="3" min="-2" max="-2" attributes="0"/></Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -123,7 +119,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblId"><Properties><Property name="text" type="java.lang.String" value="ID Obat"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblKode"><Properties><Property name="text" type="java.lang.String" value="Kode Obat"/></Properties></Component>
     <Component class="javax.swing.JLabel" name="lblNama"><Properties><Property name="text" type="java.lang.String" value="Nama Obat"/></Properties></Component>
     <Component class="javax.swing.JLabel" name="lblSatuan"><Properties><Property name="text" type="java.lang.String" value="Satuan"/></Properties></Component>
     <Component class="javax.swing.JLabel" name="lblHarga"><Properties><Property name="text" type="java.lang.String" value="Harga"/></Properties></Component>
@@ -133,7 +128,6 @@
     <Component class="javax.swing.JLabel" name="lblStokAkhir"><Properties><Property name="text" type="java.lang.String" value="Stok Akhir"/></Properties></Component>
     <Component class="javax.swing.JLabel" name="lblTanggalExpired"><Properties><Property name="text" type="java.lang.String" value="Tanggal Expired (yyyy-MM-dd)"/></Properties></Component>
     <Component class="javax.swing.JTextField" name="txtIdObat"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
-    <Component class="javax.swing.JTextField" name="txtKodeObat"></Component>
     <Component class="javax.swing.JTextField" name="txtNamaObat"></Component>
     <Component class="javax.swing.JTextField" name="txtSatuan"></Component>
     <Component class="javax.swing.JTextField" name="txtHarga">
@@ -240,9 +234,8 @@
             <Component class="javax.swing.JTable" name="tblObat">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="10" rowCount="0">
+                  <Table columnCount="9" rowCount="0">
                     <Column editable="true" title="ID Obat" type="java.lang.Object"/>
-                    <Column editable="true" title="Kode Obat" type="java.lang.Object"/>
                     <Column editable="true" title="Nama Obat" type="java.lang.Object"/>
                     <Column editable="true" title="Satuan" type="java.lang.Object"/>
                     <Column editable="true" title="Harga" type="java.lang.Object"/>

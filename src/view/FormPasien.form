@@ -35,7 +35,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblId" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNoRm" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblNik" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblNama" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblJenis" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -47,7 +46,6 @@
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtIdPasien" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtNoRm" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtNik" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtNamaPasien" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -87,11 +85,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblId" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtIdPasien" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblNoRm" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNoRm" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -155,7 +148,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblId"><Properties><Property name="text" type="java.lang.String" value="ID Pasien"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblNoRm"><Properties><Property name="text" type="java.lang.String" value="No. RM"/></Properties></Component>
     <Component class="javax.swing.JLabel" name="lblNik"><Properties><Property name="text" type="java.lang.String" value="NIK"/></Properties></Component>
     <Component class="javax.swing.JLabel" name="lblNama"><Properties><Property name="text" type="java.lang.String" value="Nama Pasien"/></Properties></Component>
     <Component class="javax.swing.JLabel" name="lblJenis"><Properties><Property name="text" type="java.lang.String" value="Jenis Kelamin"/></Properties></Component>
@@ -164,7 +156,6 @@
     <Component class="javax.swing.JLabel" name="lblAlamat"><Properties><Property name="text" type="java.lang.String" value="Alamat"/></Properties></Component>
     <Component class="javax.swing.JLabel" name="lblAlergi"><Properties><Property name="text" type="java.lang.String" value="Alergi"/></Properties></Component>
     <Component class="javax.swing.JTextField" name="txtIdPasien"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
-    <Component class="javax.swing.JTextField" name="txtNoRm"></Component>
     <Component class="javax.swing.JTextField" name="txtNik">
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNikKeyTyped"/>
@@ -300,9 +291,8 @@
             <Component class="javax.swing.JTable" name="tblPasien">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="9" rowCount="0">
+                  <Table columnCount="8" rowCount="0">
                     <Column editable="true" title="ID Pasien" type="java.lang.Object"/>
-                    <Column editable="true" title="No. RM" type="java.lang.Object"/>
                     <Column editable="true" title="NIK" type="java.lang.Object"/>
                     <Column editable="true" title="Nama Pasien" type="java.lang.Object"/>
                     <Column editable="true" title="Jenis Kelamin" type="java.lang.Object"/>

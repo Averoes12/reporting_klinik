@@ -38,12 +38,11 @@ public class FormObat extends javax.swing.JFrame {
     }
 
     private void focusForm() {
-        txtKodeObat.requestFocus();
+        txtNamaObat.requestFocus();
     }
 
     private void clear() {
         generateIdObat();
-        txtKodeObat.setText("");
         txtNamaObat.setText("");
         txtSatuan.setText("");
         txtHarga.setText("");
@@ -92,7 +91,6 @@ public class FormObat extends javax.swing.JFrame {
 
     private boolean isInputValid() {
         if (txtIdObat.getText().trim().isEmpty()
-                || txtKodeObat.getText().trim().isEmpty()
                 || txtNamaObat.getText().trim().isEmpty()
                 || txtSatuan.getText().trim().isEmpty()
                 || txtHarga.getText().trim().isEmpty()
@@ -194,7 +192,7 @@ public class FormObat extends javax.swing.JFrame {
     }
 
     private void dataTable() {
-        Object[] columns = {"ID Obat", "Kode Obat", "Nama Obat", "Satuan", "Harga", "Stok Awal", "Stok Masuk", "Stok Retur", "Stok Akhir", "Tanggal Expired"};
+        Object[] columns = {"ID Obat", "Nama Obat", "Satuan", "Harga", "Stok Awal", "Stok Masuk", "Stok Retur", "Stok Akhir", "Tanggal Expired"};
         tableModel = new DefaultTableModel(null, columns) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -208,9 +206,9 @@ public class FormObat extends javax.swing.JFrame {
         }
 
         String cari = txtCari.getText().trim();
-        String sql = "SELECT id_obat, kode_obat, nama_obat, satuan, harga, stok_awal, stok_masuk, stok_retur, stok_akhir, tanggal_expired "
+        String sql = "SELECT id_obat, nama_obat, satuan, harga, stok_awal, stok_masuk, stok_retur, stok_akhir, tanggal_expired "
                 + "FROM obat "
-                + "WHERE kode_obat LIKE ? OR nama_obat LIKE ? OR satuan LIKE ? "
+                + "WHERE id_obat LIKE ? OR nama_obat LIKE ? OR satuan LIKE ? "
                 + "ORDER BY CASE "
                 + "WHEN id_obat REGEXP '^" + ID_OBAT_PREFIX + "[0-9]+$' THEN CAST(SUBSTRING(id_obat, " + (ID_OBAT_PREFIX.length() + 1) + ") AS UNSIGNED) "
                 + "WHEN id_obat REGEXP '^[0-9]+$' THEN CAST(id_obat AS UNSIGNED) "
@@ -227,7 +225,6 @@ public class FormObat extends javax.swing.JFrame {
                     Date expired = hasil.getDate("tanggal_expired");
                     tableModel.addRow(new Object[]{
                         valueOrEmpty(hasil.getString("id_obat")),
-                        valueOrEmpty(hasil.getString("kode_obat")),
                         valueOrEmpty(hasil.getString("nama_obat")),
                         valueOrEmpty(hasil.getString("satuan")),
                         valueOrEmpty(hasil.getString("harga")),
@@ -248,7 +245,7 @@ public class FormObat extends javax.swing.JFrame {
     }
 
     private void setTableColumnWidth() {
-        int[] widths = {80, 95, 180, 90, 100, 90, 90, 90, 90, 110};
+        int[] widths = {80, 190, 90, 100, 90, 90, 90, 90, 120};
         for (int i = 0; i < widths.length && i < tblObat.getColumnModel().getColumnCount(); i++) {
             tblObat.getColumnModel().getColumn(i).setPreferredWidth(widths[i]);
         }
@@ -291,7 +288,6 @@ public class FormObat extends javax.swing.JFrame {
 
         lblTitle = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
-        lblKode = new javax.swing.JLabel();
         lblNama = new javax.swing.JLabel();
         lblSatuan = new javax.swing.JLabel();
         lblHarga = new javax.swing.JLabel();
@@ -301,7 +297,6 @@ public class FormObat extends javax.swing.JFrame {
         lblStokAkhir = new javax.swing.JLabel();
         lblTanggalExpired = new javax.swing.JLabel();
         txtIdObat = new javax.swing.JTextField();
-        txtKodeObat = new javax.swing.JTextField();
         txtNamaObat = new javax.swing.JTextField();
         txtSatuan = new javax.swing.JTextField();
         txtHarga = new javax.swing.JTextField();
@@ -329,8 +324,6 @@ public class FormObat extends javax.swing.JFrame {
         lblTitle.setText("Data Obat");
 
         lblId.setText("ID Obat");
-
-        lblKode.setText("Kode Obat");
 
         lblNama.setText("Nama Obat");
 
@@ -449,7 +442,7 @@ public class FormObat extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Obat", "Kode Obat", "Nama Obat", "Satuan", "Harga", "Stok Awal", "Stok Masuk", "Stok Retur", "Stok Akhir", "Tanggal Expired"
+                "ID Obat", "Nama Obat", "Satuan", "Harga", "Stok Awal", "Stok Masuk", "Stok Retur", "Stok Akhir", "Tanggal Expired"
             }
         ));
         tblObat.setRowHeight(24);
@@ -498,7 +491,6 @@ public class FormObat extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblId)
-                            .addComponent(lblKode)
                             .addComponent(lblNama)
                             .addComponent(lblSatuan)
                             .addComponent(lblHarga)
@@ -510,7 +502,6 @@ public class FormObat extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtIdObat)
-                            .addComponent(txtKodeObat)
                             .addComponent(txtNamaObat)
                             .addComponent(txtSatuan)
                             .addComponent(txtHarga)
@@ -541,10 +532,6 @@ public class FormObat extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
                     .addComponent(txtIdObat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblKode)
-                    .addComponent(txtKodeObat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNama)
@@ -618,19 +605,18 @@ public class FormObat extends javax.swing.JFrame {
             return;
         }
 
-        String sql = "INSERT INTO obat (id_obat, kode_obat, nama_obat, satuan, harga, stok_awal, stok_masuk, stok_retur, stok_akhir, tanggal_expired) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO obat (id_obat, nama_obat, satuan, harga, stok_awal, stok_masuk, stok_retur, stok_akhir, tanggal_expired) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stat = conn.prepareStatement(sql)) {
             stat.setString(1, txtIdObat.getText().trim());
-            stat.setString(2, txtKodeObat.getText().trim());
-            stat.setString(3, txtNamaObat.getText().trim());
-            stat.setString(4, txtSatuan.getText().trim());
-            stat.setBigDecimal(5, harga);
-            stat.setInt(6, stokAwal);
-            stat.setInt(7, stokMasuk);
-            stat.setInt(8, stokRetur);
-            stat.setInt(9, stokAkhir);
-            stat.setDate(10, tanggalExpired);
+            stat.setString(2, txtNamaObat.getText().trim());
+            stat.setString(3, txtSatuan.getText().trim());
+            stat.setBigDecimal(4, harga);
+            stat.setInt(5, stokAwal);
+            stat.setInt(6, stokMasuk);
+            stat.setInt(7, stokRetur);
+            stat.setInt(8, stokAkhir);
+            stat.setDate(9, tanggalExpired);
             stat.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "Data obat berhasil disimpan.");
@@ -668,19 +654,18 @@ public class FormObat extends javax.swing.JFrame {
             return;
         }
 
-        String sql = "UPDATE obat SET kode_obat = ?, nama_obat = ?, satuan = ?, harga = ?, stok_awal = ?, stok_masuk = ?, stok_retur = ?, stok_akhir = ?, tanggal_expired = ? "
+        String sql = "UPDATE obat SET nama_obat = ?, satuan = ?, harga = ?, stok_awal = ?, stok_masuk = ?, stok_retur = ?, stok_akhir = ?, tanggal_expired = ? "
                 + "WHERE id_obat = ?";
         try (PreparedStatement stat = conn.prepareStatement(sql)) {
-            stat.setString(1, txtKodeObat.getText().trim());
-            stat.setString(2, txtNamaObat.getText().trim());
-            stat.setString(3, txtSatuan.getText().trim());
-            stat.setBigDecimal(4, harga);
-            stat.setInt(5, stokAwal);
-            stat.setInt(6, stokMasuk);
-            stat.setInt(7, stokRetur);
-            stat.setInt(8, stokAkhir);
-            stat.setDate(9, tanggalExpired);
-            stat.setString(10, txtIdObat.getText().trim());
+            stat.setString(1, txtNamaObat.getText().trim());
+            stat.setString(2, txtSatuan.getText().trim());
+            stat.setBigDecimal(3, harga);
+            stat.setInt(4, stokAwal);
+            stat.setInt(5, stokMasuk);
+            stat.setInt(6, stokRetur);
+            stat.setInt(7, stokAkhir);
+            stat.setDate(8, tanggalExpired);
+            stat.setString(9, txtIdObat.getText().trim());
             stat.executeUpdate();
 
             JOptionPane.showMessageDialog(this, "Data obat berhasil diubah.");
@@ -750,15 +735,14 @@ public class FormObat extends javax.swing.JFrame {
 
         int modelRow = tblObat.convertRowIndexToModel(row);
         txtIdObat.setText(tableModel.getValueAt(modelRow, 0).toString());
-        txtKodeObat.setText(tableModel.getValueAt(modelRow, 1).toString());
-        txtNamaObat.setText(tableModel.getValueAt(modelRow, 2).toString());
-        txtSatuan.setText(tableModel.getValueAt(modelRow, 3).toString());
-        txtHarga.setText(tableModel.getValueAt(modelRow, 4).toString());
-        txtStokAwal.setText(tableModel.getValueAt(modelRow, 5).toString());
-        txtStokMasuk.setText(tableModel.getValueAt(modelRow, 6).toString());
-        txtStokRetur.setText(tableModel.getValueAt(modelRow, 7).toString());
-        txtStokAkhir.setText(tableModel.getValueAt(modelRow, 8).toString());
-        txtTanggalExpired.setText(tableModel.getValueAt(modelRow, 9).toString());
+        txtNamaObat.setText(tableModel.getValueAt(modelRow, 1).toString());
+        txtSatuan.setText(tableModel.getValueAt(modelRow, 2).toString());
+        txtHarga.setText(tableModel.getValueAt(modelRow, 3).toString());
+        txtStokAwal.setText(tableModel.getValueAt(modelRow, 4).toString());
+        txtStokMasuk.setText(tableModel.getValueAt(modelRow, 5).toString());
+        txtStokRetur.setText(tableModel.getValueAt(modelRow, 6).toString());
+        txtStokAkhir.setText(tableModel.getValueAt(modelRow, 7).toString());
+        txtTanggalExpired.setText(tableModel.getValueAt(modelRow, 8).toString());
         btnSimpan.setEnabled(false);
     }//GEN-LAST:event_tblObatMouseClicked
 
@@ -819,7 +803,6 @@ public class FormObat extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHarga;
     private javax.swing.JLabel lblId;
-    private javax.swing.JLabel lblKode;
     private javax.swing.JLabel lblNama;
     private javax.swing.JLabel lblSatuan;
     private javax.swing.JLabel lblStokAkhir;
@@ -833,7 +816,6 @@ public class FormObat extends javax.swing.JFrame {
     private javax.swing.JTextField txtCari;
     private javax.swing.JTextField txtHarga;
     private javax.swing.JTextField txtIdObat;
-    private javax.swing.JTextField txtKodeObat;
     private javax.swing.JTextField txtNamaObat;
     private javax.swing.JTextField txtSatuan;
     private javax.swing.JTextField txtStokAkhir;
