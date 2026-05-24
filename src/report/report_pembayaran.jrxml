@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_pembayaran" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="568ad495-ea2e-470a-b777-7f9510ef62b4">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DB Klinik"/>
+	<parameter name="TANGGAL_AWAL" class="java.sql.Date"/>
+	<parameter name="TANGGAL_AKHIR" class="java.sql.Date"/>
+	<parameter name="STATUS" class="java.lang.String"/>
+	<parameter name="METODE" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT p.tanggal_pembayaran, p.id_pembayaran, p.no_kunjungan, ps.nama_pasien, d.nama_dokter, po.nama_poli,
+       p.biaya_konsultasi, p.biaya_tindakan, p.biaya_obat, p.total_tagihan, p.jumlah_bayar, p.kembalian,
+       p.metode_pembayaran, p.status_pembayaran
+FROM pembayaran p
+JOIN kunjungan k ON k.no_kunjungan = p.no_kunjungan
+JOIN pasien ps ON ps.id_pasien = k.id_pasien
+JOIN dokter d ON d.id_dokter = k.id_dokter
+JOIN poli po ON po.id_poli = k.id_poli
+WHERE p.tanggal_pembayaran BETWEEN $P{TANGGAL_AWAL} AND $P{TANGGAL_AKHIR}
+  AND ($P{STATUS} = 'Semua' OR p.status_pembayaran = $P{STATUS})
+  AND ($P{METODE} = 'Semua' OR p.metode_pembayaran = $P{METODE})
+ORDER BY p.tanggal_pembayaran DESC, p.id_pembayaran DESC]]>
+	</queryString>
+	<field name="tanggal_pembayaran" class="java.sql.Date"/>
+	<field name="id_pembayaran" class="java.lang.String"/>
+	<field name="no_kunjungan" class="java.lang.String"/>
+	<field name="nama_pasien" class="java.lang.String"/>
+	<field name="nama_dokter" class="java.lang.String"/>
+	<field name="nama_poli" class="java.lang.String"/>
+	<field name="biaya_konsultasi" class="java.math.BigDecimal"/>
+	<field name="biaya_tindakan" class="java.math.BigDecimal"/>
+	<field name="biaya_obat" class="java.math.BigDecimal"/>
+	<field name="total_tagihan" class="java.math.BigDecimal"/>
+	<field name="jumlah_bayar" class="java.math.BigDecimal"/>
+	<field name="kembalian" class="java.math.BigDecimal"/>
+	<field name="metode_pembayaran" class="java.lang.String"/>
+	<field name="status_pembayaran" class="java.lang.String"/>
+	<title>
+		<band height="58">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="26" uuid="7ddab516-27da-48c2-98ea-3ec60823cf83"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report Pembayaran]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="30" width="802" height="18" uuid="4a4c2e79-e4f7-4297-834f-24ea938aa9cc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Periode: " + $P{TANGGAL_AWAL} + " s/d " + $P{TANGGAL_AKHIR} + " | Status: " + $P{STATUS} + " | Metode: " + $P{METODE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="24">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="70" height="22" backcolor="#E5E7EB" uuid="b804482c-003d-4d49-b64a-777a46ef571c"/>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="70" y="0" width="75" height="22" backcolor="#E5E7EB" uuid="b58b6add-145b-41e9-a7cc-5c87c1bc8bb6"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="145" y="0" width="90" height="22" backcolor="#E5E7EB" uuid="214fbc9e-8fb3-4517-9183-f36adc0d1038"/>
+				<text><![CDATA[Kunjungan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="235" y="0" width="115" height="22" backcolor="#E5E7EB" uuid="3ac81e29-4fe3-4fdb-bdb2-b571371d1d52"/>
+				<text><![CDATA[Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="350" y="0" width="100" height="22" backcolor="#E5E7EB" uuid="4343c1a6-7dc3-4f20-bfb2-c7b2ebdaba98"/>
+				<text><![CDATA[Dokter]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="450" y="0" width="80" height="22" backcolor="#E5E7EB" uuid="9cb0a686-bc35-4787-a3ea-9d13a44d5026"/>
+				<text><![CDATA[Poli]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="530" y="0" width="85" height="22" backcolor="#E5E7EB" uuid="a963e4b0-5a24-4149-8c31-f3bd6fe6f74e"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="615" y="0" width="85" height="22" backcolor="#E5E7EB" uuid="a2784052-42ba-4521-89c7-ffd9d5d7570d"/>
+				<text><![CDATA[Bayar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="700" y="0" width="55" height="22" backcolor="#E5E7EB" uuid="bf61129b-38ae-440c-a25a-ddf1553a2d95"/>
+				<text><![CDATA[Metode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="755" y="0" width="47" height="22" backcolor="#E5E7EB" uuid="1cfd7290-d072-47e5-b1fe-9822d5af94da"/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="70" height="18" uuid="6695b302-9295-4b29-8be8-995f4b36a35e"/>
+				<textFieldExpression><![CDATA[$F{tanggal_pembayaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="0" width="75" height="18" uuid="2c4e89a1-614d-4ff2-866b-cc2a22446f4b"/>
+				<textFieldExpression><![CDATA[$F{id_pembayaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="0" width="90" height="18" uuid="df96d66f-7c77-46d3-b3f7-d79173c0270c"/>
+				<textFieldExpression><![CDATA[$F{no_kunjungan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="0" width="115" height="18" uuid="a441081b-461c-4437-8f5a-8ddf7a2a03d9"/>
+				<textFieldExpression><![CDATA[$F{nama_pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="100" height="18" uuid="7a99ee26-3eb3-4c03-acc6-561e8ab77f30"/>
+				<textFieldExpression><![CDATA[$F{nama_dokter}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="80" height="18" uuid="f80b1c68-ed2d-40c3-a1af-6ed73013eeda"/>
+				<textFieldExpression><![CDATA[$F{nama_poli}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="530" y="0" width="85" height="18" uuid="005f6645-e7a8-46c0-bd86-91b9035d13d2"/>
+				<textFieldExpression><![CDATA[$F{total_tagihan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="615" y="0" width="85" height="18" uuid="7e19a729-8c0e-4a56-bc6f-a2ce48ea5658"/>
+				<textFieldExpression><![CDATA[$F{jumlah_bayar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="0" width="55" height="18" uuid="469dd4cd-138e-41d9-98b2-36bb8920b268"/>
+				<textFieldExpression><![CDATA[$F{metode_pembayaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="755" y="0" width="47" height="18" uuid="78699327-f8f0-4b44-ae0e-db068746d21c"/>
+				<textFieldExpression><![CDATA[$F{status_pembayaran}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

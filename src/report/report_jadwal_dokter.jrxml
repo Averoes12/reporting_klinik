@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="report_jadwal_dokter" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <parameter name="HARI" class="java.lang.String"/>
+    <parameter name="KEYWORD" class="java.lang.String"/>
+    <queryString language="SQL">
+        <![CDATA[
+SELECT j.id_jadwal, d.nama_dokter, p.nama_poli, j.hari, j.jam_mulai, j.jam_selesai, j.kuota
+FROM jadwal_dokter j
+JOIN dokter d ON d.id_dokter = j.id_dokter
+JOIN poli p ON p.id_poli = j.id_poli
+WHERE ($P{HARI} = 'Semua' OR j.hari = $P{HARI})
+  AND (j.id_jadwal LIKE $P{KEYWORD} OR d.nama_dokter LIKE $P{KEYWORD} OR p.nama_poli LIKE $P{KEYWORD} OR j.hari LIKE $P{KEYWORD})
+ORDER BY FIELD(j.hari, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'), j.jam_mulai, d.nama_dokter
+        ]]>
+    </queryString>
+    <field name="id_jadwal" class="java.lang.String"/>
+    <field name="nama_dokter" class="java.lang.String"/>
+    <field name="nama_poli" class="java.lang.String"/>
+    <field name="hari" class="java.lang.String"/>
+    <field name="jam_mulai" class="java.lang.String"/>
+    <field name="jam_selesai" class="java.lang.String"/>
+    <field name="kuota" class="java.lang.Integer"/>
+    <title>
+        <band height="58">
+            <staticText>
+                <reportElement x="0" y="0" width="802" height="26"/>
+                <textElement textAlignment="Center"><font size="16" isBold="true"/></textElement>
+                <text><![CDATA[Report Jadwal Dokter]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="0" y="30" width="802" height="18"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression><![CDATA["Hari: " + $P{HARI}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="24">
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="0" y="0" width="95" height="22"/><text><![CDATA[ID Jadwal]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="95" y="0" width="190" height="22"/><text><![CDATA[Dokter]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="285" y="0" width="160" height="22"/><text><![CDATA[Poli]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="445" y="0" width="95" height="22"/><text><![CDATA[Hari]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="540" y="0" width="95" height="22"/><text><![CDATA[Jam Mulai]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="635" y="0" width="105" height="22"/><text><![CDATA[Jam Selesai]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="740" y="0" width="62" height="22"/><text><![CDATA[Kuota]]></text></staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20">
+            <textField><reportElement x="0" y="0" width="95" height="18"/><textFieldExpression><![CDATA[$F{id_jadwal}]]></textFieldExpression></textField>
+            <textField><reportElement x="95" y="0" width="190" height="18"/><textFieldExpression><![CDATA[$F{nama_dokter}]]></textFieldExpression></textField>
+            <textField><reportElement x="285" y="0" width="160" height="18"/><textFieldExpression><![CDATA[$F{nama_poli}]]></textFieldExpression></textField>
+            <textField><reportElement x="445" y="0" width="95" height="18"/><textFieldExpression><![CDATA[$F{hari}]]></textFieldExpression></textField>
+            <textField><reportElement x="540" y="0" width="95" height="18"/><textFieldExpression><![CDATA[$F{jam_mulai}]]></textFieldExpression></textField>
+            <textField><reportElement x="635" y="0" width="105" height="18"/><textFieldExpression><![CDATA[$F{jam_selesai}]]></textFieldExpression></textField>
+            <textField><reportElement x="740" y="0" width="62" height="18"/><textFieldExpression><![CDATA[$F{kuota}]]></textFieldExpression></textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="20">
+            <textField><reportElement x="662" y="0" width="140" height="18"/><textElement textAlignment="Right"/><textFieldExpression><![CDATA["Halaman " + $V{PAGE_NUMBER}]]></textFieldExpression></textField>
+        </band>
+    </pageFooter>
+</jasperReport>

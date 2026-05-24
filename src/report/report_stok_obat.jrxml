@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="report_stok_obat" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <parameter name="KEYWORD" class="java.lang.String"/>
+    <queryString language="SQL">
+        <![CDATA[
+SELECT id_obat, nama_obat, satuan, harga, stok_awal, stok_masuk, stok_retur, stok_akhir,
+       tanggal_expired,
+       CASE WHEN stok_akhir <= 0 THEN 'Habis'
+            WHEN stok_akhir <= 10 THEN 'Hampir Habis'
+            ELSE 'Aman' END AS status_stok
+FROM obat
+WHERE id_obat LIKE $P{KEYWORD} OR nama_obat LIKE $P{KEYWORD} OR satuan LIKE $P{KEYWORD}
+ORDER BY nama_obat
+        ]]>
+    </queryString>
+    <field name="id_obat" class="java.lang.String"/>
+    <field name="nama_obat" class="java.lang.String"/>
+    <field name="satuan" class="java.lang.String"/>
+    <field name="harga" class="java.math.BigDecimal"/>
+    <field name="stok_awal" class="java.lang.Integer"/>
+    <field name="stok_masuk" class="java.lang.Integer"/>
+    <field name="stok_retur" class="java.lang.Integer"/>
+    <field name="stok_akhir" class="java.lang.Integer"/>
+    <field name="tanggal_expired" class="java.sql.Date"/>
+    <field name="status_stok" class="java.lang.String"/>
+    <title>
+        <band height="48">
+            <staticText><reportElement x="0" y="0" width="802" height="26"/><textElement textAlignment="Center"><font size="16" isBold="true"/></textElement><text><![CDATA[Report Stok Obat]]></text></staticText>
+            <textField><reportElement x="0" y="28" width="802" height="18"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA["Filter: " + $P{KEYWORD}]]></textFieldExpression></textField>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="24">
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="0" y="0" width="70" height="22"/><text><![CDATA[ID]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="70" y="0" width="160" height="22"/><text><![CDATA[Nama Obat]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="230" y="0" width="70" height="22"/><text><![CDATA[Satuan]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="300" y="0" width="90" height="22"/><text><![CDATA[Harga]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="390" y="0" width="70" height="22"/><text><![CDATA[Awal]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="460" y="0" width="70" height="22"/><text><![CDATA[Masuk]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="530" y="0" width="70" height="22"/><text><![CDATA[Retur]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="600" y="0" width="70" height="22"/><text><![CDATA[Akhir]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="670" y="0" width="80" height="22"/><text><![CDATA[Expired]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="750" y="0" width="52" height="22"/><text><![CDATA[Status]]></text></staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20">
+            <textField><reportElement x="0" y="0" width="70" height="18"/><textFieldExpression><![CDATA[$F{id_obat}]]></textFieldExpression></textField>
+            <textField><reportElement x="70" y="0" width="160" height="18"/><textFieldExpression><![CDATA[$F{nama_obat}]]></textFieldExpression></textField>
+            <textField><reportElement x="230" y="0" width="70" height="18"/><textFieldExpression><![CDATA[$F{satuan}]]></textFieldExpression></textField>
+            <textField pattern="#,##0.00"><reportElement x="300" y="0" width="90" height="18"/><textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression></textField>
+            <textField><reportElement x="390" y="0" width="70" height="18"/><textFieldExpression><![CDATA[$F{stok_awal}]]></textFieldExpression></textField>
+            <textField><reportElement x="460" y="0" width="70" height="18"/><textFieldExpression><![CDATA[$F{stok_masuk}]]></textFieldExpression></textField>
+            <textField><reportElement x="530" y="0" width="70" height="18"/><textFieldExpression><![CDATA[$F{stok_retur}]]></textFieldExpression></textField>
+            <textField><reportElement x="600" y="0" width="70" height="18"/><textFieldExpression><![CDATA[$F{stok_akhir}]]></textFieldExpression></textField>
+            <textField><reportElement x="670" y="0" width="80" height="18"/><textFieldExpression><![CDATA[$F{tanggal_expired}]]></textFieldExpression></textField>
+            <textField><reportElement x="750" y="0" width="52" height="18"/><textFieldExpression><![CDATA[$F{status_stok}]]></textFieldExpression></textField>
+        </band>
+    </detail>
+</jasperReport>

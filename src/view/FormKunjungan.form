@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Form Kunjungan"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblTitle" min="-2" pref="820" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblNoKunjungan" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="lblIdPasien" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="lblIdDokter" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="lblIdPoli" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="lblTanggalKunjungan" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="lblStatus" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="lblKeluhan" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="lblDiagnosa" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="lblTindakan" min="-2" pref="170" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtNoKunjungan" min="-2" pref="570" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="txtIdPasien" min="-2" pref="480" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPilihIdPasien" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="txtIdDokter" min="-2" pref="480" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPilihIdDokter" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="txtIdPoli" min="-2" pref="480" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPilihIdPoli" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="txtTanggalKunjungan" min="-2" pref="570" max="-2" attributes="0"/>
+                          <Component id="cmbStatus" min="-2" pref="570" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneKeluhan" min="-2" pref="570" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneDiagnosa" min="-2" pref="570" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneTindakan" min="-2" pref="570" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="btnUbah" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="btnHapus" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="btnBatal" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="btnKeluar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="txtCari" min="-2" pref="190" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCari" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jScrollPaneTable" min="-2" pref="820" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblNoKunjungan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNoKunjungan" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblIdPasien" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIdPasien" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPilihIdPasien" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblIdDokter" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIdDokter" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPilihIdDokter" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblIdPoli" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIdPoli" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPilihIdPoli" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblTanggalKunjungan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTanggalKunjungan" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblKeluhan" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPaneKeluhan" min="-2" pref="58" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblDiagnosa" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPaneDiagnosa" min="-2" pref="58" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblTindakan" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPaneTindakan" min="-2" pref="58" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnUbah" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnHapus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBatal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnKeluar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtCari" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCari" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPaneTable" min="-2" pref="220" max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="btnBatal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Batal"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCari">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cari"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnHapus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hapus"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHapusActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnKeluar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Keluar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKeluarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPilihIdDokter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pilih"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPilihIdDokterActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPilihIdPasien">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pilih"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPilihIdPasienActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPilihIdPoli">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pilih"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPilihIdPoliActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSimpan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Simpan"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnUbah">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ubah"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUbahActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDiagnosa">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Diagnosa"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIdDokter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Id Dokter"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIdPasien">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Id Pasien"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIdPoli">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Id Poli"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblKeluhan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Keluhan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNoKunjungan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="No Kunjungan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStatus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Status"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTanggalKunjungan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tanggal Kunjungan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTindakan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tindakan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTitle">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Data Kunjungan"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPaneDiagnosa">
+      <AuxValues><AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/></AuxValues>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="txtDiagnosa">
+          <Properties>
+            <Property name="rows" type="int" value="2"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPaneKeluhan">
+      <AuxValues><AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/></AuxValues>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="txtKeluhan">
+          <Properties>
+            <Property name="rows" type="int" value="2"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPaneTable">
+      <AuxValues><AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/></AuxValues>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="tblData">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblDataMouseClicked"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPaneTindakan">
+      <AuxValues><AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/></AuxValues>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="txtTindakan">
+          <Properties>
+            <Property name="rows" type="int" value="2"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JTextField" name="txtCari">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCariKeyPressed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtIdDokter">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtIdPasien">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtIdPoli">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNoKunjungan">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbStatus">
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="txtTanggalKunjungan">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

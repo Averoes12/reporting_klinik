@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="report_kunjungan" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="klinik"/>
+    <parameter name="TANGGAL_AWAL" class="java.sql.Date"/>
+    <parameter name="TANGGAL_AKHIR" class="java.sql.Date"/>
+    <parameter name="STATUS" class="java.lang.String"/>
+    <parameter name="KEYWORD" class="java.lang.String"/>
+    <queryString language="SQL">
+        <![CDATA[
+SELECT k.tanggal_kunjungan, k.no_kunjungan, ps.nama_pasien, ps.jenis_kelamin,
+       d.nama_dokter, po.nama_poli, k.keluhan, k.status
+FROM kunjungan k
+JOIN pasien ps ON ps.id_pasien = k.id_pasien
+JOIN dokter d ON d.id_dokter = k.id_dokter
+JOIN poli po ON po.id_poli = k.id_poli
+WHERE k.tanggal_kunjungan BETWEEN $P{TANGGAL_AWAL} AND $P{TANGGAL_AKHIR}
+  AND ($P{STATUS} = 'Semua' OR k.status = $P{STATUS})
+  AND (ps.nama_pasien LIKE $P{KEYWORD} OR d.nama_dokter LIKE $P{KEYWORD} OR po.nama_poli LIKE $P{KEYWORD} OR k.no_kunjungan LIKE $P{KEYWORD})
+ORDER BY k.tanggal_kunjungan DESC, k.no_kunjungan DESC
+        ]]>
+    </queryString>
+    <field name="tanggal_kunjungan" class="java.sql.Date"/>
+    <field name="no_kunjungan" class="java.lang.String"/>
+    <field name="nama_pasien" class="java.lang.String"/>
+    <field name="jenis_kelamin" class="java.lang.String"/>
+    <field name="nama_dokter" class="java.lang.String"/>
+    <field name="nama_poli" class="java.lang.String"/>
+    <field name="keluhan" class="java.lang.String"/>
+    <field name="status" class="java.lang.String"/>
+    <title>
+        <band height="58">
+            <staticText><reportElement x="0" y="0" width="802" height="26"/><textElement textAlignment="Center"><font size="16" isBold="true"/></textElement><text><![CDATA[Report Kunjungan Pasien]]></text></staticText>
+            <textField><reportElement x="0" y="30" width="802" height="18"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA["Periode: " + $P{TANGGAL_AWAL} + " s/d " + $P{TANGGAL_AKHIR} + " | Status: " + $P{STATUS}]]></textFieldExpression></textField>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="24">
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="0" y="0" width="75" height="22"/><text><![CDATA[Tanggal]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="75" y="0" width="100" height="22"/><text><![CDATA[No Kunjungan]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="175" y="0" width="135" height="22"/><text><![CDATA[Pasien]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="310" y="0" width="85" height="22"/><text><![CDATA[Kelamin]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="395" y="0" width="130" height="22"/><text><![CDATA[Dokter]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="525" y="0" width="95" height="22"/><text><![CDATA[Poli]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="620" y="0" width="115" height="22"/><text><![CDATA[Keluhan]]></text></staticText>
+            <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="735" y="0" width="67" height="22"/><text><![CDATA[Status]]></text></staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20">
+            <textField><reportElement x="0" y="0" width="75" height="18"/><textFieldExpression><![CDATA[$F{tanggal_kunjungan}]]></textFieldExpression></textField>
+            <textField><reportElement x="75" y="0" width="100" height="18"/><textFieldExpression><![CDATA[$F{no_kunjungan}]]></textFieldExpression></textField>
+            <textField><reportElement x="175" y="0" width="135" height="18"/><textFieldExpression><![CDATA[$F{nama_pasien}]]></textFieldExpression></textField>
+            <textField><reportElement x="310" y="0" width="85" height="18"/><textFieldExpression><![CDATA[$F{jenis_kelamin}]]></textFieldExpression></textField>
+            <textField><reportElement x="395" y="0" width="130" height="18"/><textFieldExpression><![CDATA[$F{nama_dokter}]]></textFieldExpression></textField>
+            <textField><reportElement x="525" y="0" width="95" height="18"/><textFieldExpression><![CDATA[$F{nama_poli}]]></textFieldExpression></textField>
+            <textField><reportElement x="620" y="0" width="115" height="18"/><textFieldExpression><![CDATA[$F{keluhan}]]></textFieldExpression></textField>
+            <textField><reportElement x="735" y="0" width="67" height="18"/><textFieldExpression><![CDATA[$F{status}]]></textFieldExpression></textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="20">
+            <textField><reportElement x="662" y="0" width="140" height="18"/><textElement textAlignment="Right"/><textFieldExpression><![CDATA["Halaman " + $V{PAGE_NUMBER}]]></textFieldExpression></textField>
+        </band>
+    </pageFooter>
+</jasperReport>

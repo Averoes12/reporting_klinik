@@ -30,8 +30,7 @@ public class FormObat extends javax.swing.JFrame {
     private DefaultTableModel tableModel;
 
     public FormObat() {
-        initComponents();
-        clear();
+        initComponents();clear();
         focusForm();
         dataTable();
         setLocationRelativeTo(null);
@@ -50,7 +49,7 @@ public class FormObat extends javax.swing.JFrame {
         txtStokMasuk.setText("0");
         txtStokRetur.setText("0");
         txtStokAkhir.setText("0");
-        txtTanggalExpired.setText("");
+        DateChooserHelper.clear(txtTanggalExpired);
         txtCari.setText("");
         btnSimpan.setEnabled(true);
         updateStokAkhir();
@@ -97,7 +96,7 @@ public class FormObat extends javax.swing.JFrame {
                 || txtStokAwal.getText().trim().isEmpty()
                 || txtStokMasuk.getText().trim().isEmpty()
                 || txtStokRetur.getText().trim().isEmpty()
-                || txtTanggalExpired.getText().trim().isEmpty()) {
+                || DateChooserHelper.getText(txtTanggalExpired).trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Data obat masih ada yang kosong.");
             return false;
         }
@@ -112,7 +111,7 @@ public class FormObat extends javax.swing.JFrame {
             return false;
         }
 
-        if (parseDate(txtTanggalExpired.getText(), "Tanggal expired") == null) {
+        if (parseDate(DateChooserHelper.getText(txtTanggalExpired), "Tanggal expired") == null) {
             return false;
         }
 
@@ -145,7 +144,12 @@ public class FormObat extends javax.swing.JFrame {
         }
 
         try {
-            return Date.valueOf(LocalDate.parse(trimmed, DATE_FORMATTER));
+            LocalDate date = LocalDate.parse(trimmed, DATE_FORMATTER);
+            if (date.isBefore(LocalDate.now())) {
+                JOptionPane.showMessageDialog(this, fieldName + " tidak boleh sebelum tanggal hari ini.");
+                return null;
+            }
+            return Date.valueOf(date);
         } catch (DateTimeParseException e) {
             showDateFormatMessage(fieldName);
             return null;
@@ -304,7 +308,8 @@ public class FormObat extends javax.swing.JFrame {
         txtStokMasuk = new javax.swing.JTextField();
         txtStokRetur = new javax.swing.JTextField();
         txtStokAkhir = new javax.swing.JTextField();
-        txtTanggalExpired = new javax.swing.JTextField();
+        txtTanggalExpired = DateChooserHelper.createDateChooser();
+        DateChooserHelper.preventBackdate(txtTanggalExpired);
         btnSimpan = new javax.swing.JButton();
         btnUbah = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
@@ -379,12 +384,6 @@ public class FormObat extends javax.swing.JFrame {
         txtStokAkhir.setEditable(false);
 
         txtTanggalExpired.setToolTipText("Format tanggal: yyyy-MM-dd, contoh: 2026-12-31.");
-        txtTanggalExpired.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTanggalExpiredKeyTyped(evt);
-            }
-        });
-
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -596,7 +595,7 @@ public class FormObat extends javax.swing.JFrame {
             return;
         }
 
-        Date tanggalExpired = parseDate(txtTanggalExpired.getText(), "Tanggal expired");
+        Date tanggalExpired = parseDate(DateChooserHelper.getText(txtTanggalExpired), "Tanggal expired");
         BigDecimal harga = parseBigDecimal(txtHarga.getText(), "Harga");
         Integer stokAwal = parseInteger(txtStokAwal.getText(), "Stok awal");
         Integer stokMasuk = parseInteger(txtStokMasuk.getText(), "Stok masuk");
@@ -645,7 +644,7 @@ public class FormObat extends javax.swing.JFrame {
             return;
         }
 
-        Date tanggalExpired = parseDate(txtTanggalExpired.getText(), "Tanggal expired");
+        Date tanggalExpired = parseDate(DateChooserHelper.getText(txtTanggalExpired), "Tanggal expired");
         BigDecimal harga = parseBigDecimal(txtHarga.getText(), "Harga");
         Integer stokAwal = parseInteger(txtStokAwal.getText(), "Stok awal");
         Integer stokMasuk = parseInteger(txtStokMasuk.getText(), "Stok masuk");
@@ -742,7 +741,7 @@ public class FormObat extends javax.swing.JFrame {
         txtStokMasuk.setText(tableModel.getValueAt(modelRow, 5).toString());
         txtStokRetur.setText(tableModel.getValueAt(modelRow, 6).toString());
         txtStokAkhir.setText(tableModel.getValueAt(modelRow, 7).toString());
-        txtTanggalExpired.setText(tableModel.getValueAt(modelRow, 8).toString());
+        DateChooserHelper.setDateText(txtTanggalExpired, tableModel.getValueAt(modelRow, 8).toString());
         btnSimpan.setEnabled(false);
     }//GEN-LAST:event_tblObatMouseClicked
 
@@ -777,6 +776,19 @@ public class FormObat extends javax.swing.JFrame {
     private void txtTanggalExpiredKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTanggalExpiredKeyTyped
         onlyDateCharacter(evt);
     }//GEN-LAST:event_txtTanggalExpiredKeyTyped
+
+    private void applyHints() {
+        txtIdObat.setToolTipText("ID obat dibuat otomatis.");
+        txtNamaObat.setToolTipText("Masukkan nama obat.");
+        txtSatuan.setToolTipText("Masukkan satuan obat, contoh tablet/botol/strip.");
+        txtHarga.setToolTipText("Masukkan harga obat dalam angka.");
+        txtStokAwal.setToolTipText("Masukkan stok awal.");
+        txtStokMasuk.setToolTipText("Masukkan stok masuk.");
+        txtStokRetur.setToolTipText("Masukkan stok retur.");
+        txtStokAkhir.setToolTipText("Stok akhir dihitung otomatis.");
+        txtTanggalExpired.setToolTipText("Masukkan tanggal expired format yyyy-MM-dd.");
+        txtCari.setToolTipText("Ketik kata kunci pencarian obat lalu tekan Enter atau tombol Cari.");
+    }
 
     public static void main(String args[]) {
         try {
@@ -822,6 +834,6 @@ public class FormObat extends javax.swing.JFrame {
     private javax.swing.JTextField txtStokAwal;
     private javax.swing.JTextField txtStokMasuk;
     private javax.swing.JTextField txtStokRetur;
-    private javax.swing.JTextField txtTanggalExpired;
+    private com.toedter.calendar.JDateChooser txtTanggalExpired;
     // End of variables declaration//GEN-END:variables
 }

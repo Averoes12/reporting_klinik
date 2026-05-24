@@ -178,13 +178,11 @@
         <Property name="text" type="java.lang.String" value="Perempuan"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTanggalLahir">
+    <Component class="com.toedter.calendar.JDateChooser" name="txtTanggalLahir">
       <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
         <Property name="toolTipText" type="java.lang.String" value="Format tanggal: yyyy-MM-dd, contoh: 1990-01-31."/>
       </Properties>
-      <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTanggalLahirKeyTyped"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNoHp">
       <Events>

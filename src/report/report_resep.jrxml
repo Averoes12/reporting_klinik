@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="report_resep" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <parameter name="ID_RESEP" class="java.lang.String"/>
+    <queryString language="SQL">
+        <![CDATA[
+SELECT r.tanggal_resep, r.id_resep, r.no_kunjungan, ps.nama_pasien,
+       d.nama_dokter, po.nama_poli, rd.id_resep_detail, o.id_obat, o.nama_obat,
+       rd.jumlah, rd.aturan_pakai, rd.harga_satuan, rd.subtotal, r.catatan, o.satuan
+FROM resep r
+JOIN kunjungan k ON k.no_kunjungan = r.no_kunjungan
+JOIN pasien ps ON ps.id_pasien = k.id_pasien
+JOIN dokter d ON d.id_dokter = k.id_dokter
+JOIN poli po ON po.id_poli = k.id_poli
+JOIN resep_detail rd ON rd.id_resep = r.id_resep
+JOIN obat o ON o.id_obat = rd.id_obat
+WHERE r.id_resep = $P{ID_RESEP}
+ORDER BY rd.id_resep_detail
+        ]]>
+    </queryString>
+    <field name="tanggal_resep" class="java.sql.Date"/>
+    <field name="id_resep" class="java.lang.String"/>
+    <field name="no_kunjungan" class="java.lang.String"/>
+    <field name="nama_pasien" class="java.lang.String"/>
+    <field name="nama_dokter" class="java.lang.String"/>
+    <field name="nama_poli" class="java.lang.String"/>
+    <field name="id_resep_detail" class="java.lang.String"/>
+    <field name="id_obat" class="java.lang.String"/>
+    <field name="nama_obat" class="java.lang.String"/>
+    <field name="jumlah" class="java.lang.Integer"/>
+    <field name="aturan_pakai" class="java.lang.String"/>
+    <field name="harga_satuan" class="java.math.BigDecimal"/>
+    <field name="subtotal" class="java.math.BigDecimal"/>
+    <field name="catatan" class="java.lang.String"/>
+    <field name="satuan" class="java.lang.String"/>
+    <variable name="TOTAL_RESEP" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[$F{subtotal}]]></variableExpression>
+        <initialValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></initialValueExpression>
+    </variable>
+    <group name="ResepGroup">
+        <groupExpression><![CDATA[$F{id_resep}]]></groupExpression>
+        <groupHeader>
+            <band height="160">
+                <staticText>
+                    <reportElement x="0" y="0" width="555" height="28"/>
+                    <textElement textAlignment="Center"><font size="16" isBold="true"/></textElement>
+                    <text><![CDATA[RESEP PASIEN]]></text>
+                </staticText>
+                <staticText><reportElement x="0" y="40" width="90" height="18"/><text><![CDATA[ID Resep]]></text></staticText>
+                <textField><reportElement x="105" y="40" width="170" height="18"/><textFieldExpression><![CDATA[$F{id_resep}]]></textFieldExpression></textField>
+                <staticText><reportElement x="295" y="40" width="90" height="18"/><text><![CDATA[Tanggal]]></text></staticText>
+                <textField><reportElement x="400" y="40" width="155" height="18"/><textFieldExpression><![CDATA[$F{tanggal_resep}]]></textFieldExpression></textField>
+                <staticText><reportElement x="0" y="60" width="90" height="18"/><text><![CDATA[No Kunjungan]]></text></staticText>
+                <textField><reportElement x="105" y="60" width="170" height="18"/><textFieldExpression><![CDATA[$F{no_kunjungan}]]></textFieldExpression></textField>
+                <staticText><reportElement x="295" y="60" width="90" height="18"/><text><![CDATA[Poli]]></text></staticText>
+                <textField><reportElement x="400" y="60" width="155" height="18"/><textFieldExpression><![CDATA[$F{nama_poli}]]></textFieldExpression></textField>
+                <staticText><reportElement x="0" y="80" width="90" height="18"/><text><![CDATA[Pasien]]></text></staticText>
+                <textField><reportElement x="105" y="80" width="170" height="18"/><textFieldExpression><![CDATA[$F{nama_pasien}]]></textFieldExpression></textField>
+                <staticText><reportElement x="295" y="80" width="90" height="18"/><text><![CDATA[Dokter]]></text></staticText>
+                <textField><reportElement x="400" y="80" width="155" height="18"/><textFieldExpression><![CDATA[$F{nama_dokter}]]></textFieldExpression></textField>
+                <staticText><reportElement x="0" y="103" width="90" height="18"/><text><![CDATA[Catatan]]></text></staticText>
+                <textField textAdjust="StretchHeight"><reportElement x="105" y="103" width="450" height="36"/><textFieldExpression><![CDATA[$F{catatan} == null || $F{catatan}.isEmpty() ? "-" : $F{catatan}]]></textFieldExpression></textField>
+                <line><reportElement x="0" y="146" width="555" height="1"/></line>
+                <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="0" y="138" width="30" height="20"/><textElement textAlignment="Center"/><text><![CDATA[No]]></text></staticText>
+                <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="30" y="138" width="185" height="20"/><text><![CDATA[Nama Obat]]></text></staticText>
+                <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="215" y="138" width="55" height="20"/><textElement textAlignment="Center"/><text><![CDATA[Jml]]></text></staticText>
+                <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="270" y="138" width="150" height="20"/><text><![CDATA[Aturan Pakai]]></text></staticText>
+                <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="420" y="138" width="65" height="20"/><textElement textAlignment="Right"/><text><![CDATA[Harga]]></text></staticText>
+                <staticText><reportElement mode="Opaque" backcolor="#E5E7EB" x="485" y="138" width="70" height="20"/><textElement textAlignment="Right"/><text><![CDATA[Subtotal]]></text></staticText>
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band height="34">
+                <line><reportElement x="0" y="2" width="555" height="1"/></line>
+                <staticText><reportElement x="350" y="8" width="135" height="20"/><textElement textAlignment="Right"><font isBold="true"/></textElement><text><![CDATA[Total Obat]]></text></staticText>
+                <textField pattern="#,##0.00"><reportElement x="485" y="8" width="70" height="20"/><textElement textAlignment="Right"><font isBold="true"/></textElement><textFieldExpression><![CDATA[$V{TOTAL_RESEP}]]></textFieldExpression></textField>
+            </band>
+        </groupFooter>
+    </group>
+    <detail>
+        <band height="22">
+            <textField><reportElement x="0" y="0" width="30" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression></textField>
+            <textField><reportElement x="30" y="0" width="185" height="20"/><textFieldExpression><![CDATA[$F{nama_obat}]]></textFieldExpression></textField>
+            <textField><reportElement x="215" y="0" width="55" height="20"/><textElement textAlignment="Center"/><textFieldExpression><![CDATA[String.valueOf($F{jumlah}) + " " + $F{satuan}]]></textFieldExpression></textField>
+            <textField textAdjust="StretchHeight"><reportElement x="270" y="0" width="150" height="20"/><textFieldExpression><![CDATA[$F{aturan_pakai}]]></textFieldExpression></textField>
+            <textField pattern="#,##0.00"><reportElement x="420" y="0" width="65" height="20"/><textElement textAlignment="Right"/><textFieldExpression><![CDATA[$F{harga_satuan}]]></textFieldExpression></textField>
+            <textField pattern="#,##0.00"><reportElement x="485" y="0" width="70" height="20"/><textElement textAlignment="Right"/><textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression></textField>
+        </band>
+    </detail>
+</jasperReport>

@@ -28,8 +28,7 @@ public class FormPasien extends javax.swing.JFrame {
     private DefaultTableModel tableModel;
 
     public FormPasien() {
-        initComponents();
-        clear();
+        initComponents();clear();
         focusForm();
         dataTable();
         setLocationRelativeTo(null);
@@ -43,7 +42,7 @@ public class FormPasien extends javax.swing.JFrame {
         generateIdPasien();
         txtNik.setText("");
         txtNamaPasien.setText("");
-        txtTanggalLahir.setText("");
+        DateChooserHelper.clear(txtTanggalLahir);
         txtNoHp.setText("");
         txtAlamat.setText("");
         txtAlergi.setText("");
@@ -121,7 +120,7 @@ public class FormPasien extends javax.swing.JFrame {
                 || txtNik.getText().trim().isEmpty()
                 || txtNamaPasien.getText().trim().isEmpty()
                 || selectedGender().isEmpty()
-                || txtTanggalLahir.getText().trim().isEmpty()
+                || DateChooserHelper.getText(txtTanggalLahir).trim().isEmpty()
                 || txtAlamat.getText().trim().isEmpty()
                 || txtNoHp.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Data pasien masih ada yang kosong.");
@@ -133,7 +132,7 @@ public class FormPasien extends javax.swing.JFrame {
             return false;
         }
 
-        if (parseTanggal(txtTanggalLahir.getText()) == null) {
+        if (parseTanggal(DateChooserHelper.getText(txtTanggalLahir)) == null) {
             return false;
         }
 
@@ -257,7 +256,7 @@ public class FormPasien extends javax.swing.JFrame {
         txtNamaPasien = new javax.swing.JTextField();
         rbL = new javax.swing.JRadioButton();
         rbP = new javax.swing.JRadioButton();
-        txtTanggalLahir = new javax.swing.JTextField();
+        txtTanggalLahir = DateChooserHelper.createDateChooser();
         txtNoHp = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAlamat = new javax.swing.JTextArea();
@@ -312,12 +311,6 @@ public class FormPasien extends javax.swing.JFrame {
         rbP.setText("Perempuan");
 
         txtTanggalLahir.setToolTipText("Format tanggal: yyyy-MM-dd, contoh: 1990-01-31.");
-        txtTanggalLahir.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTanggalLahirKeyTyped(evt);
-            }
-        });
-
         txtNoHp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNoHpKeyTyped(evt);
@@ -534,7 +527,7 @@ public class FormPasien extends javax.swing.JFrame {
             return;
         }
 
-        Date tanggalLahir = parseTanggal(txtTanggalLahir.getText());
+        Date tanggalLahir = parseTanggal(DateChooserHelper.getText(txtTanggalLahir));
         if (tanggalLahir == null) {
             return;
         }
@@ -572,7 +565,7 @@ public class FormPasien extends javax.swing.JFrame {
             return;
         }
 
-        Date tanggalLahir = parseTanggal(txtTanggalLahir.getText());
+        Date tanggalLahir = parseTanggal(DateChooserHelper.getText(txtTanggalLahir));
         if (tanggalLahir == null) {
             return;
         }
@@ -661,7 +654,7 @@ public class FormPasien extends javax.swing.JFrame {
         txtNik.setText(tableModel.getValueAt(modelRow, 1).toString());
         txtNamaPasien.setText(tableModel.getValueAt(modelRow, 2).toString());
         setSelectedGender(tableModel.getValueAt(modelRow, 3).toString());
-        txtTanggalLahir.setText(tableModel.getValueAt(modelRow, 4).toString());
+        DateChooserHelper.setDateText(txtTanggalLahir, tableModel.getValueAt(modelRow, 4).toString());
         txtNoHp.setText(tableModel.getValueAt(modelRow, 5).toString());
         txtAlamat.setText(tableModel.getValueAt(modelRow, 6).toString());
         txtAlergi.setText(tableModel.getValueAt(modelRow, 7).toString());
@@ -679,6 +672,17 @@ public class FormPasien extends javax.swing.JFrame {
     private void txtTanggalLahirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTanggalLahirKeyTyped
         onlyDateCharacter(evt);
     }//GEN-LAST:event_txtTanggalLahirKeyTyped
+
+    private void applyHints() {
+        txtIdPasien.setToolTipText("ID pasien dibuat otomatis.");
+        txtNik.setToolTipText("Masukkan NIK pasien.");
+        txtNamaPasien.setToolTipText("Masukkan nama lengkap pasien.");
+        txtTanggalLahir.setToolTipText("Masukkan tanggal lahir format yyyy-MM-dd.");
+        txtNoHp.setToolTipText("Masukkan nomor HP pasien.");
+        txtAlamat.setToolTipText("Masukkan alamat pasien.");
+        txtAlergi.setToolTipText("Masukkan alergi pasien jika ada.");
+        txtCari.setToolTipText("Ketik kata kunci pencarian pasien lalu tekan Enter atau tombol Cari.");
+    }
 
     public static void main(String args[]) {
         try {
@@ -726,6 +730,6 @@ public class FormPasien extends javax.swing.JFrame {
     private javax.swing.JTextField txtNamaPasien;
     private javax.swing.JTextField txtNik;
     private javax.swing.JTextField txtNoHp;
-    private javax.swing.JTextField txtTanggalLahir;
+    private com.toedter.calendar.JDateChooser txtTanggalLahir;
     // End of variables declaration//GEN-END:variables
 }

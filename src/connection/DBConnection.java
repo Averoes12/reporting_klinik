@@ -7,10 +7,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DBConnection {
+//    "jdbc:mysql://bore.pub:23306/klinik?user=root&password=root123"
     private static final Logger LOGGER = Logger.getLogger(DBConnection.class.getName());
-    private static final String URL = "jdbc:mysql://localhost:3306/klinik?zeroDateTimeBehavior=CONVERT_TO_NULL";
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
+    private static final String HOST = config("db.host", "DB_HOST", "bore.pub");
+    private static final String PORT = config("db.port", "DB_PORT", "23306");
+    private static final String DATABASE = config("db.name", "DB_NAME", "klinik");
+    private static final String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;
+//            + "?zeroDateTimeBehavior=CONVERT_TO_NULL";
+    private static final String USER = config("db.user", "DB_USER", "root");
+    private static final String PASSWORD = config("db.password", "DB_PASSWORD", "root123");
 
     public Connection connect() {
         try {
@@ -36,5 +41,19 @@ public class DBConnection {
         } catch (ClassNotFoundException ex) {
             throw new SQLException("MySQL Connector/J tidak ditemukan", ex);
         }
+    }
+
+    private static String config(String propertyName, String envName, String defaultValue) {
+        String propertyValue = System.getProperty(propertyName);
+        if (propertyValue != null && !propertyValue.trim().isEmpty()) {
+            return propertyValue.trim();
+        }
+
+        String envValue = System.getenv(envName);
+        if (envValue != null && !envValue.trim().isEmpty()) {
+            return envValue.trim();
+        }
+
+        return defaultValue;
     }
 }

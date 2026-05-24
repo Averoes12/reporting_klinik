@@ -152,11 +152,11 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtStokAkhir"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
-    <Component class="javax.swing.JTextField" name="txtTanggalExpired">
+    <Component class="com.toedter.calendar.JDateChooser" name="txtTanggalExpired">
       <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
         <Property name="toolTipText" type="java.lang.String" value="Format tanggal: yyyy-MM-dd, contoh: 2026-12-31."/>
       </Properties>
-      <Events><EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTanggalExpiredKeyTyped"/></Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSimpan">
       <Properties><Property name="text" type="java.lang.String" value="Simpan"/></Properties>
