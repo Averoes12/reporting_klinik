@@ -36,6 +36,7 @@ public class FormKunjungan extends javax.swing.JFrame {
         clear();
         focusForm();
         dataTable();
+        btnHapus.setEnabled(false);
         setLocationRelativeTo(null);
     }
 

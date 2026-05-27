@@ -35,6 +35,7 @@ public class FormPembayaran extends JFrame {
         }
         clear();
         dataTable();
+        btnHapus.setEnabled(false);
         setLocationRelativeTo(null);
     }
 

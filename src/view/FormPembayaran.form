@@ -167,22 +167,78 @@
         <Property name="text" type="java.lang.String" value="Pembayaran Kunjungan"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblIdPembayaran"><Properties><Property name="text" type="java.lang.String" value="ID Pembayaran"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblNoKunjungan"><Properties><Property name="text" type="java.lang.String" value="No Kunjungan"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblTanggal"><Properties><Property name="text" type="java.lang.String" value="Tanggal Pembayaran"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblBiayaKonsultasi"><Properties><Property name="text" type="java.lang.String" value="Biaya Konsultasi"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblBiayaTindakan"><Properties><Property name="text" type="java.lang.String" value="Biaya Tindakan"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblBiayaObat"><Properties><Property name="text" type="java.lang.String" value="Biaya Obat"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblTotalTagihan"><Properties><Property name="text" type="java.lang.String" value="Total Tagihan"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblJumlahBayar"><Properties><Property name="text" type="java.lang.String" value="Jumlah Bayar"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblKembalian"><Properties><Property name="text" type="java.lang.String" value="Kembalian"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblMetode"><Properties><Property name="text" type="java.lang.String" value="Metode Pembayaran"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblStatus"><Properties><Property name="text" type="java.lang.String" value="Status Pembayaran"/></Properties></Component>
-    <Component class="javax.swing.JTextField" name="txtIdPembayaran"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
-    <Component class="javax.swing.JTextField" name="txtNoKunjungan"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
+    <Component class="javax.swing.JLabel" name="lblIdPembayaran">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ID Pembayaran"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNoKunjungan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="No Kunjungan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTanggal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tanggal Pembayaran"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBiayaKonsultasi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Biaya Konsultasi"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBiayaTindakan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Biaya Tindakan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBiayaObat">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Biaya Obat"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTotalTagihan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Total Tagihan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblJumlahBayar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Jumlah Bayar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblKembalian">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kembalian"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblMetode">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Metode Pembayaran"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStatus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Status Pembayaran"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtIdPembayaran">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNoKunjungan">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="btnPilihKunjungan">
-      <Properties><Property name="text" type="java.lang.String" value="Pilih"/></Properties>
-      <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPilihKunjunganActionPerformed"/></Events>
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pilih"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPilihKunjunganActionPerformed"/>
+      </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="txtTanggal">
       <Properties>
@@ -190,17 +246,35 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBiayaKonsultasi">
-      <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBiayaKonsultasiActionPerformed"/></Events>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBiayaKonsultasiActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBiayaTindakan">
-      <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBiayaTindakanActionPerformed"/></Events>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBiayaTindakanActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtBiayaObat"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
-    <Component class="javax.swing.JTextField" name="txtTotalTagihan"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
+    <Component class="javax.swing.JTextField" name="txtBiayaObat">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTotalTagihan">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JTextField" name="txtJumlahBayar">
-      <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtJumlahBayarActionPerformed"/></Events>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtJumlahBayarActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtKembalian"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
+    <Component class="javax.swing.JTextField" name="txtKembalian">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JComboBox" name="cmbMetode">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -213,7 +287,9 @@
           </StringArray>
         </Property>
       </Properties>
-      <AuxValues><AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/></AuxValues>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbStatus">
       <Properties>
@@ -224,31 +300,57 @@
           </StringArray>
         </Property>
       </Properties>
-      <AuxValues><AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/></AuxValues>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnHitung">
-      <Properties><Property name="text" type="java.lang.String" value="Hitung"/></Properties>
-      <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHitungActionPerformed"/></Events>
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hitung"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHitungActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSimpan">
-      <Properties><Property name="text" type="java.lang.String" value="Simpan"/></Properties>
-      <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed"/></Events>
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Simpan"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnUbah">
-      <Properties><Property name="text" type="java.lang.String" value="Ubah"/></Properties>
-      <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUbahActionPerformed"/></Events>
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ubah"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUbahActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnHapus">
-      <Properties><Property name="text" type="java.lang.String" value="Hapus"/></Properties>
-      <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHapusActionPerformed"/></Events>
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hapus"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHapusActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBatal">
-      <Properties><Property name="text" type="java.lang.String" value="Batal"/></Properties>
-      <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatalActionPerformed"/></Events>
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Batal"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBatalActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnKeluar">
-      <Properties><Property name="text" type="java.lang.String" value="Keluar"/></Properties>
-      <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKeluarActionPerformed"/></Events>
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Keluar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKeluarActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="panelData">
       <Properties>
@@ -258,6 +360,7 @@
           </Border>
         </Property>
       </Properties>
+
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
@@ -293,14 +396,23 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtCari">
-          <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCariActionPerformed"/></Events>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCariActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCari">
-          <Properties><Property name="text" type="java.lang.String" value="Cari"/></Properties>
-          <Events><EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariActionPerformed"/></Events>
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cari"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <AuxValues><AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/></AuxValues>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTable" name="tblPembayaran">
@@ -324,7 +436,9 @@
                 </Property>
                 <Property name="rowHeight" type="int" value="24"/>
               </Properties>
-              <Events><EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPembayaranMouseClicked"/></Events>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPembayaranMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

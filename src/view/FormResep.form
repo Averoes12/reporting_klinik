@@ -47,7 +47,7 @@
                               <Component id="btnPilihKunjungan" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="txtTanggalResep" max="32767" attributes="0"/>
-                          <Component id="jScrollPaneCatatan" pref="260" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneCatatan" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="txtIdObat" min="-2" pref="180" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -139,25 +139,76 @@
         <Property name="text" type="java.lang.String" value="Input Resep dan Detail Obat"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblIdResep"><Properties><Property name="text" type="java.lang.String" value="ID Resep"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblKunjungan"><Properties><Property name="text" type="java.lang.String" value="Kunjungan"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblTanggal"><Properties><Property name="text" type="java.lang.String" value="Tanggal Resep (yyyy-MM-dd)"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblCatatan"><Properties><Property name="text" type="java.lang.String" value="Catatan"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblObat"><Properties><Property name="text" type="java.lang.String" value="Obat"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblJumlah"><Properties><Property name="text" type="java.lang.String" value="Jumlah"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblAturan"><Properties><Property name="text" type="java.lang.String" value="Aturan Pakai"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblHarga"><Properties><Property name="text" type="java.lang.String" value="Harga Satuan"/></Properties></Component>
-    <Component class="javax.swing.JLabel" name="lblSubtotal"><Properties><Property name="text" type="java.lang.String" value="Subtotal"/></Properties></Component>
-    <Component class="javax.swing.JTextField" name="txtIdResep"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
-    <Component class="javax.swing.JTextField" name="txtNoKunjungan"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
-    <Component class="javax.swing.JButton" name="btnPilihKunjungan"><Properties><Property name="text" type="java.lang.String" value="Pilih"/></Properties></Component>
+    <Component class="javax.swing.JLabel" name="lblIdResep">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ID Resep"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblKunjungan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kunjungan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTanggal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tanggal Resep (yyyy-MM-dd)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCatatan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Catatan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblObat">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Obat"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblJumlah">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Jumlah"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAturan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aturan Pakai"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblHarga">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Harga Satuan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSubtotal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Subtotal"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtIdResep">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNoKunjungan">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPilihKunjungan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pilih"/>
+      </Properties>
+    </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="txtTanggalResep">
       <Properties>
         <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPaneCatatan">
-      <AuxValues><AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/></AuxValues>
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="txtCatatan">
@@ -168,12 +219,27 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="txtIdObat"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
-    <Component class="javax.swing.JButton" name="btnPilihObat"><Properties><Property name="text" type="java.lang.String" value="Pilih"/></Properties></Component>
-    <Component class="javax.swing.JTextField" name="txtJumlah"></Component>
-    <Component class="javax.swing.JTextField" name="txtHargaSatuan"></Component>
-    <Component class="javax.swing.JTextField" name="txtSubtotal"><Properties><Property name="editable" type="boolean" value="false"/></Properties></Component>
-    <Component class="javax.swing.JTextField" name="txtAturanPakai"></Component>
+    <Component class="javax.swing.JTextField" name="txtIdObat">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPilihObat">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pilih"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtJumlah">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtHargaSatuan">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtSubtotal">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAturanPakai">
+    </Component>
     <Container class="javax.swing.JPanel" name="panelDetail">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -182,6 +248,7 @@
           </Border>
         </Property>
       </Properties>
+
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
@@ -209,18 +276,30 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="panelDetailButton">
+
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
             <Property name="alignment" type="int" value="0"/>
             <Property name="horizontalGap" type="int" value="6"/>
             <Property name="verticalGap" type="int" value="0"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnTambahDetail"><Properties><Property name="text" type="java.lang.String" value="Tambah Detail"/></Properties></Component>
-            <Component class="javax.swing.JButton" name="btnHapusDetail"><Properties><Property name="text" type="java.lang.String" value="Hapus Detail"/></Properties></Component>
+            <Component class="javax.swing.JButton" name="btnTambahDetail">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tambah Detail"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnHapusDetail">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hapus Detail"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPaneDetail">
-          <AuxValues><AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/></AuxValues>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTable" name="tblDetail">
@@ -233,15 +312,28 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="panelButton">
+
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
         <Property name="alignment" type="int" value="0"/>
         <Property name="horizontalGap" type="int" value="6"/>
         <Property name="verticalGap" type="int" value="0"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnSimpan"><Properties><Property name="text" type="java.lang.String" value="Simpan Resep"/></Properties></Component>
-        <Component class="javax.swing.JButton" name="btnBatal"><Properties><Property name="text" type="java.lang.String" value="Batal"/></Properties></Component>
-        <Component class="javax.swing.JButton" name="btnKeluar"><Properties><Property name="text" type="java.lang.String" value="Keluar"/></Properties></Component>
+        <Component class="javax.swing.JButton" name="btnSimpan">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Simpan Resep"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnBatal">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Batal"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnKeluar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Keluar"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
